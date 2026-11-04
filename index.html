@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Germanly</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdnJyB4MT0nMCcgeTE9JzAnIHgyPScxJyB5Mj0nMSc+PHN0b3Agb2Zmc2V0PScwJyBzdG9wLWNvbG9yPScjN2M0ZGZmJy8+PHN0b3Agb2Zmc2V0PScxJyBzdG9wLWNvbG9yPScjMmY2ZmU4Jy8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9J2MnPjxyZWN0IHdpZHRoPSc2NCcgaGVpZ2h0PSc2NCcgcng9JzE1Jy8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSd1cmwoI2MpJz48cmVjdCB3aWR0aD0nNjQnIGhlaWdodD0nNjQnIGZpbGw9J3VybCgjZyknLz48cmVjdCB5PSc1Micgd2lkdGg9JzY0JyBoZWlnaHQ9JzQnIGZpbGw9JyMxMTEnLz48cmVjdCB5PSc1Nicgd2lkdGg9JzY0JyBoZWlnaHQ9JzQnIGZpbGw9JyNlMDNiM2InLz48cmVjdCB5PSc2MCcgd2lkdGg9JzY0JyBoZWlnaHQ9JzQnIGZpbGw9JyNmZmNlMDAnLz48L2c+PHBhdGggZD0nTTQyIDE4LjZBMTMgMTMgMCAxIDAgNDUgMjdIMzMnIGZpbGw9J25vbmUnIHN0cm9rZT0nI2ZmZicgc3Ryb2tlLXdpZHRoPSc2LjUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcvPjwvc3ZnPg==">
+<meta name="theme-color" content="#7c4dff">
+<style>
+:root{--bg:#f3f6fa;--ink:#1b2a49;--card:#fff;--gold:#f2a900;--ok:#1f9d63;--bad:#d7263d;--ln:#d9e0ec}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a2b;--ink:#e8eefc;--card:#1b2640;--ln:#2d3b5c;--ok:#47d392;--bad:#ff6b7d}}
+:root[data-theme="dark"]{--bg:#121a2b;--ink:#e8eefc;--card:#1b2640;--ln:#2d3b5c;--ok:#47d392;--bad:#ff6b7d}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 "Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink)}
+header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 20px;border-bottom:4px solid var(--gold);background:var(--card)}
+main{max-width:900px;margin:0 auto;padding:20px 20px 120px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:18px;margin-bottom:14px}
+h2,h3{margin:0 0 8px}
+button,input,textarea{font:inherit;color:inherit}
+button{background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+button.g{background:var(--gold);color:#1b2a49;font-weight:600}
+button.o{background:none;border:1px solid var(--ln);color:var(--ink)}
+input,textarea{width:100%;padding:9px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);margin:4px 0 10px}
+.opt{display:block;width:100%;margin:6px 0;text-align:start}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.big{font-size:34px;font-weight:700;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:6px;border-bottom:1px solid var(--ln);text-align:start;vertical-align:top}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.bar{position:fixed;inset:auto 0 0 0;background:var(--ink);color:var(--bg);padding:14px 20px;z-index:9}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold)}
+main,header{position:relative;z-index:1}
+.aur{position:fixed;inset:-25%;z-index:0;pointer-events:none;background:radial-gradient(circle at 20% 25%,#ffce0040,transparent 38%),radial-gradient(circle at 80% 20%,#e03b3b30,transparent 38%),radial-gradient(circle at 60% 85%,#2f6fe838,transparent 42%),radial-gradient(circle at 15% 85%,#7c4dff30,transparent 38%);animation:drift 20s ease-in-out infinite alternate}
+.deco{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.deco span{position:absolute;top:100%;font-weight:800;opacity:.2;animation:rise linear infinite}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,#111,#e03b3b,#ffce00,#e03b3b,#111);background-size:200% 100%;animation:slide 6s linear infinite}
+.logo{font-size:22px;font-weight:800;background:linear-gradient(90deg,#e03b3b,#d95f00,#7c4dff,#e03b3b);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 8s linear infinite}
+.card{animation:pop .5s backwards}
+.q{animation-duration:.3s}
+.mc,.q{border-top:6px solid var(--c)}
+.mc{transition:transform .2s,box-shadow .2s}
+.mc:hover{transform:translateY(-4px);box-shadow:0 12px 26px -14px var(--c)}
+.mc button.o{border-color:var(--c);transition:transform .15s,background .15s}
+.mc button.o:hover{background:var(--c);color:#fff;transform:scale(1.05)}
+.ic{display:inline-block;font-size:28px;animation:bob 2.4s ease-in-out infinite}
+.opt{transition:transform .15s,background .15s}
+.opt:hover:not(:disabled){background:var(--c);color:#fff;transform:translateX(5px)}
+.right{background:var(--ok)!important;color:#fff!important;border-color:var(--ok)!important;animation:pulse .5s}
+.wrong{background:var(--bad)!important;color:#fff!important;border-color:var(--bad)!important;animation:shake .4s}
+#fb b{display:inline-block;animation:pop .35s backwards}
+.pb{height:8px;background:var(--ln);border-radius:9px;overflow:hidden;margin-bottom:12px}
+.pb i{display:block;height:100%;width:var(--t);background:var(--c);border-radius:9px;animation:fill .6s ease-out}
+.hero{text-align:center;margin:6px auto 22px}
+.hero h1{margin:0;font-size:clamp(40px,9vw,72px);line-height:1.05;background:linear-gradient(90deg,#e03b3b,#d95f00,#7c4dff,#2f6fe8,#e03b3b);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 8s linear infinite}
+.hero p{font-size:18px;margin:8px 0 12px}
+.hello{margin:0 0 2px;font-size:28px}
+.chip{display:inline-block;color:#fff;font-weight:600;padding:5px 12px;border-radius:99px;margin:4px;animation:pop .5s backwards}
+.wave{display:inline-block;transform-origin:70% 70%;animation:wave 2.2s ease-in-out infinite}
+#splash{position:fixed;inset:0;z-index:100;display:grid;place-content:center;text-align:center;color:#fff;background:linear-gradient(135deg,#7c4dff,#2f6fe8 60%,#008f8f);transition:opacity .6s,visibility .6s;cursor:pointer}
+#splash .fl i{display:block;height:14px;width:min(320px,70vw);margin:0 auto 6px;transform-origin:left;animation:wipe .6s backwards}
+#splash .hi{font-size:clamp(52px,16vw,120px);font-weight:800;animation:pop .8s .5s backwards}
+#splash p{font-size:18px;animation:pop .8s 1s backwards}
+.cf{position:fixed;top:-20px;width:9px;height:14px;z-index:101;pointer-events:none;animation:fall linear forwards}
+.tf{border-left:6px solid #7c4dff;animation:none}
+.tt{font-size:26px;font-weight:700;border:0;border-bottom:2px solid var(--ln);border-radius:0;background:none}
+.qq{font-size:18px;border:0;border-bottom:1px solid var(--ln);border-radius:0}
+.row input:not([type=radio]){flex:1;min-width:140px}
+.rv{padding:8px 0;border-bottom:1px solid var(--ln)}
+details summary{cursor:pointer;margin:8px 0}
+a{color:#2f6fe8;font-weight:600}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}}
+@keyframes bob{50%{transform:translateY(-5px)}}
+@keyframes slide{to{background-position:200% 0}}
+@keyframes wipe{from{transform:scaleX(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes pulse{50%{transform:scale(1.04)}}
+@keyframes fill{from{width:var(--f)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@keyframes rise{to{transform:translateY(-120vh) rotate(20deg)}}
+@keyframes drift{to{transform:rotate(10deg) scale(1.1)}}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-10deg)}50%{transform:rotate(8deg)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+.bar{padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+.opt.sel{background:var(--c)!important;color:#fff!important}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8;border-radius:50%;width:52px;height:52px;font-size:24px;padding:0;background:var(--gold)}
+#panel{position:fixed;right:16px;bottom:84px;width:min(360px,calc(100vw - 32px));max-height:70vh;overflow:auto;z-index:8;background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px;box-shadow:0 10px 30px #0004}
+.cl{max-height:240px;overflow:auto;margin:8px 0}
+.you{background:var(--gold);color:#1b2a49;border-radius:10px;padding:6px 10px;margin:6px 0 6px 30px}
+.bot{background:var(--bg);border-radius:10px;padding:6px 10px;margin:6px 30px 6px 0;white-space:pre-line}
+.em{position:fixed;top:-30px;font-size:28px;z-index:101;pointer-events:none;font-style:normal;animation:fall linear forwards}
+.em.up{top:auto;bottom:-30px;animation-name:lift}
+@keyframes lift{to{transform:translateY(-110vh) rotate(20deg);opacity:0}}
+</style></head><body>
+<div class="aur"></div><div class="deco" id="deco"></div>
+<div id="splash" aria-hidden="true"><div class="fl"><i style="background:#111"></i><i style="background:#e03b3b;animation-delay:.15s"></i><i style="background:#ffce00;animation-delay:.3s"></i></div><div class="hi">Hallo! <span class="wave">👋</span></div><p>Willkommen. Let's learn German together.</p></div>
+<header><b class="logo">Germanly</b><span id="who"></span></header>
+<main id="app"></main>
+<div id="bar" class="bar" hidden></div>
+<button class="fab" onclick="panel()" aria-label="Help">💬</button><div id="panel" hidden></div>
+<script>
+// Optional: paste a Firebase Realtime Database URL (no trailing slash) so student data reaches the admin on any device.
+const DB={url:'https://germanly-78647-default-rtdb.firebaseio.com',
+ async get(k){
+  if(!this.url){
+   if(k=='users'){const o={};Object.keys(localStorage).filter(x=>x.startsWith('users/')).forEach(x=>o[x.slice(6)]=JSON.parse(localStorage[x]));return o}
+   return JSON.parse(localStorage[k]||'null')}
+  return (await fetch(`${this.url}/${k}.json`)).json()},
+ async put(k,v){if(!this.url)localStorage[k]=JSON.stringify(v);else await fetch(`${this.url}/${k}.json`,{method:'PUT',body:JSON.stringify(v)})},
+ async log(e){if(!this.url){const l=await this.get('logs')||[];l.push(e);return this.put('logs',l)}await fetch(`${this.url}/logs.json`,{method:'POST',body:JSON.stringify(e)})},
+ async del(k){if(!this.url)localStorage.removeItem(k);else await fetch(`${this.url}/${k}.json`,{method:'DELETE'})},
+ async purge(u){if(!this.url)return this.put('logs',(await this.get('logs')||[]).filter(x=>x.u!=u));const o=await this.get('logs')||{};await Promise.all(Object.entries(o).filter(([k,x])=>x.u==u).map(([k])=>this.del('logs/'+k)))},
+ async logs(){const l=await this.get('logs')||[];return Array.isArray(l)?l:Object.values(l)}};
+
+// Lektionen from the book (Hallo Deutsch, 3. Schuljahr). Format: 'article|German|Arabic' (empty article for verbs and phrases).
+const L={
+10:{t:'Gesundheit',w:['der|Arm|ذراع','der|Arzt|طبيب','der|Bauch|بطن','der|Finger|إصبع','der|Fuß|قدم','der|Hals|حلق / رقبة','der|Kopf|رأس','der|Körper|جسم الإنسان','der|Mund|فم','der|Patient|مريض','der|Rücken|ظهر','der|Zahn|سن','das|Auge|عين','das|Bein|ساق','das|Fieber|حمى','das|Gesicht|وجه','das|Haar|شعر','das|Krankenhaus|مستشفى','das|Medikament|دواء','das|Ohr|أذن','die|Apotheke|صيدلية','die|Erkältung|نزلة برد','die|Gesundheit|الصحة','die|Hand|يد','die|Nase|أنف','die|Praxis|عيادة','die|Tablette|قرص (دواء)','die|Therapie|علاج / معالجة','|untersuchen|يفحص','|wehtun|يوجع / يؤلم'],
+ g:['Du ___ mehr Wasser trinken.|sollst,soll,sollt|sollst','Er ___ zum Arzt gehen.|sollen,soll,sollst|soll','Mein Kopf tut ___.|weh,wehe,wehen|weh','Das ist ___ Hand. (ich)|mein,meine,meiner|meine']},
+11:{t:'Verkehrsmittel',w:['der|Bahnhof|محطة قطار','der|Bahnsteig|رصيف المحطة','der|Bus|أتوبيس','der|Fahrplan|جدول مواعيد السفر','der|Flug|رحلة طيران','der|Flughafen|مطار','der|Stadtplan|خريطة المدينة','der|Weg|طريق','der|Zug|قطار','das|Auto|سيارة','das|Fahrrad|دراجة','das|Flugzeug|طائرة','das|Gepäck|أمتعة','das|Schiff|سفينة','das|Taxi|تاكسي','das|Verkehrsmittel|وسيلة مواصلات','die|Ampel|إشارة مرور','die|Fahrkarte|تذكرة سفر','die|Haltestelle|محطة أتوبيس','die|S-Bahn|القطار السريع','die|Straße|شارع','die|Straßenbahn|ترام','die|U-Bahn|مترو الأنفاق','|abfahren|ينطلق / يغادر','|ankommen|يصل','|umsteigen|يبدل مواصلة'],
+ g:['Ich fahre mit ___ Bus.|dem,den,der|dem','Sie fährt mit ___ U-Bahn.|dem,der,die|der','Wir fahren mit ___ Auto.|dem,das,den|dem','Er fliegt mit ___ Flugzeug.|dem,der,den|dem']},
+12:{t:'Der Kunde ist König',w:['der|Computer|كمبيوتر','der|Drucker|طابعة','der|Fernseher|تليفزيون','der|Führerschein|رخصة قيادة','der|Gast|ضيف','der|Geburtstag|عيد ميلاد','der|Kühlschrank|ثلاجة','der|Kunde|زبون','das|Abendessen|وجبة العشاء','das|Frühstück|وجبة الإفطار','das|Handy|موبايل','das|Konzert|حفل موسيقى','das|Licht|ضوء / نور','das|Mittagessen|وجبة الغداء','die|Brille|نظارة','die|Hausaufgabe|واجب منزلي','die|Prüfung|امتحان','die|Rechnung|فاتورة / حساب','die|Reparatur|تصليح / صيانة','die|Tür|باب','die|Woche|أسبوع','|funktionieren|يعمل / يشتغل','|reparieren|يصلح','|reservieren|يحجز','|schicken|يرسل'],
+ g:['Bitte ___ das Fenster auf!|mach,machst,macht|mach','Ich esse ___ dem Unterricht.|nach,mit,für|nach','Ich komme ___ einer Stunde.|in,bei,mit|in','Die Reparatur ___ viel Geld.|kostet,kosten,koste|kostet']},
+13:{t:'Neue Kleider',w:['der|Anzug|بدلة','der|Gürtel|حزام','der|Hut|قبعة','der|Koffer|حقيبة سفر','der|Mantel|معطف / بالطو','der|Pullover|بلوفر','der|Rock|جيبة','der|Schirm|مظلة / شمسية','der|Schuh|حذاء','das|Abendkleid|فستان سهرة','das|Hemd|قميص','das|Kaufhaus|متجر / محل','das|Kleid|فستان','das|T-Shirt|تي شيرت','die|Bluse|بلوزة','die|Farbe|لون','die|Größe|المقاس','die|Hose|بنطلون','die|Jacke|جاكت','die|Kasse|خزينة','die|Krawatte|كرافتة','die|Sandale|صندل','die|Tasche|حقيبة','|anprobieren|يجرب / يقيس','|anziehen|يرتدي','|bezahlen|يحاسب / يدفع','|gefallen|يعجب','|passen|يناسب'],
+ g:['Das Kleid gefällt ___.|mir,mich,ich|mir','Die Hose passt ___ nicht.|mir,mich,ich|mir','Der Mantel ___ mir gut.|steht,stehen,stehst|steht','Wie viel ___ der Pullover?|kostet,kosten,koste|kostet']},
+14:{t:'Feste',w:['der|Erfolg|النجاح','der|Geburtstag|عيد ميلاد','der|Glückwunsch|أمنية سعيدة','der|Gruß|تحية','der|Spaß|متعة / سعادة','das|Datum|تاريخ','das|Fest|عيد / حفل','das|Feuerwerk|ألعاب نارية','das|Geschenk|هدية','das|Glück|حظ','das|Neujahr|العام الجديد','die|Antwort|رد / إجابة','die|Aufgabe|واجب','die|Einladung|دعوة / عزومة','die|Freude|سعادة / بهجة','die|Hochzeit|حفل زفاف','die|Kirche|كنيسة','die|Mitternacht|منتصف الليل','die|Party|حفلة','die|Überraschung|مفاجأة','|einladen|يدعو إلى','|feiern|يحتفل','|gratulieren|يهنئ على','|heiraten|يتزوج','|tanzen|يرقص'],
+ g:['Ich gratuliere dir ___ Geburtstag.|zum,zur,im|zum','Wir freuen uns ___ die Party.|auf,für,mit|auf','Ich lade dich ___ meiner Party ein.|zu,auf,für|zu','Ich ___ dir viel Glück.|wünsche,wünscht,wünschst|wünsche']}};
+// More grammar questions so every mode has 15 per Lektion.
+const MORE={
+10:['Ich ___ Fieber.|habe,hat,haben|habe','Sie ___ Kopfschmerzen.|hat,habe,haben|hat','Wir ___ jeden Tag Sport machen.|sollen,sollst,soll|sollen','Ihr ___ viel schlafen.|sollt,soll,sollen|sollt','Das ist ___ Arm. (ich)|mein,meine,meinen|mein','Das ist ___ Nase. (du)|deine,dein,deinen|deine','Das sind ___ Augen. (er)|seine,sein,seiner|seine','Der Patient geht ___ Arzt.|zum,zur,im|zum','Ich gehe ___ Apotheke.|zur,zum,im|zur','Der Arzt ___ den Patienten.|untersucht,untersuche,untersuchen|untersucht','Ich ___ eine Tablette.|nehme,nimmt,nehmen|nehme'],
+11:['Ich fahre mit ___ Zug.|dem,der,den|dem','Wir fahren mit ___ Straßenbahn.|der,dem,die|der','Sie kommt mit ___ Fahrrad.|dem,der,den|dem','Er fährt mit ___ Taxi.|dem,der,das|dem','Ich fahre mit ___ S-Bahn.|der,dem,den|der','Der Zug ___ um acht Uhr ab.|fährt,fahre,fahren|fährt','Das Flugzeug ___ in Kairo an.|kommt,komme,kommen|kommt','Wo ___ ich um?|steige,steigst,steigt|steige','Du ___ den Bus. (nehmen)|nimmst,nehme,nehmt|nimmst','Wir ___ um 9 Uhr am Flughafen an.|kommen,kommt,kommst|kommen','Die Fahrkarte ___ drei Pfund.|kostet,kosten,kostest|kostet'],
+12:['Bitte ___ das Licht an!|mach,machst,macht|mach','Ich ___ das Fenster auf.|mache,machst,macht|mache','Er ___ den Computer an.|macht,mache,machen|macht','Wir ___ einen Tisch.|reservieren,reserviert,reserviere|reservieren','Der Kunde ___ die Rechnung.|bezahlt,bezahle,bezahlen|bezahlt','Das Konzert beginnt ___ acht Uhr.|um,in,bei|um','Wir haben ___ Dienstag Unterricht.|am,im,um|am','Wir haben ___ Juli Urlaub.|im,am,um|im','Der Drucker ___ nicht.|funktioniert,funktionieren,funktioniere|funktioniert','Ich ___ dir eine Nachricht.|schicke,schickt,schicken|schicke','Der Techniker ___ den Fernseher.|repariert,repariere,reparieren|repariert'],
+13:['Die Schuhe gefallen ___.|ihm,ihn,er|ihm','Die Jacke passt ___ gut. (sie)|ihr,sie,ihn|ihr','Der Rock steht ___ gut. (du)|dir,dich,du|dir','Das Hemd gehört ___. (er)|ihm,ihn,er|ihm','Wie gefällt ___ das Kleid? (du)|dir,dich,du|dir','Ich ___ ein T-Shirt an.|ziehe,zieht,ziehst|ziehe','Ich möchte die Hose ___.|anprobieren,probieren an,anprobiert|anprobieren','Haben Sie diese Hose in einer anderen ___? (M, L, XL)|Größe,Farbe,Tasche|Größe','Ich bezahle an der ___.|Kasse,Tasche,Farbe|Kasse','Der Mantel ist zu ___.|teuer,teuere,teuren|teuer','Ich ___ den Koffer mit. (mitbringen)|bringe,bringt,bringen|bringe'],
+14:['Heute ist der ___ Mai. (1.)|erste,eins,einte|erste','Wir haben am ___ Mai Prüfung. (2.)|zweiten,zwei,zweite|zweiten','Mein Geburtstag ist am ___ Juni. (3.)|dritten,dritte,drei|dritten','Wir ___ Weihnachten.|feiern,feiert,feierst|feiern','Sie ___ nächste Woche.|heiratet,heirate,heiraten|heiratet','Alles Gute ___ Geburtstag!|zum,zur,im|zum','Herzlichen Glückwunsch ___ Hochzeit!|zur,zum,im|zur','Ich freue mich ___ die Ferien.|auf,für,mit|auf','Wir ___ viele Gäste ein.|laden,ladet,ladest|laden','Er ___ mir ein Geschenk.|gibt,gebe,geben|gibt','Ich ___ dir viel Spaß!|wünsche,wünscht,wünschen|wünsche']};
+Object.keys(MORE).forEach(k=>L[k].g.push(...MORE[k]));
+const MODES={
+ speak:['Voice practice','Say the word. Your browser listens and checks your pronunciation.','#e03b3b','🎤'],
+ spell:['Spelling','Listen, read the Arabic meaning, and type the German word.','#7c4dff','✏️'],
+ meaning:['Meaning','Pick the right meaning: German to Arabic, or Arabic to German.','#008f8f','🧠'],
+ grammar:['Grammar','Choose the correct form to complete the sentence.','#d95f00','📝'],
+ article:['Der, die, das','Pick the right article: der/die/das, ein/eine, mein/meine.','#2f6fe8','🏷️']};
+
+const $=s=>document.querySelector(s),app=$('#app');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+const shuf=a=>[...a].sort(()=>Math.random()-.5),pick=(a,n)=>shuf(a).slice(0,n),fd=t=>new Date(t).toLocaleString();
+const norm=s=>s.toLowerCase().replace(/[^a-zäöüß ]/g,'').replace(/\s+/g,' ').trim();
+const lev=(a,b)=>{const d=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=d[0];d[0]=i;for(let j=1;j<=b.length;j++){const t=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,p+(a[i-1]!=b[j-1]));p=t}}return d[b.length]};
+const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(x=>x.toString(16).padStart(2,'0')).join('');
+const key=n=>n.trim().toLowerCase().replace(/[.$#\[\]\/\s]/g,'_');
+const say=t=>{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='de-DE';speechSynthesis.speak(u)};
+function listen(done){const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R)return done(null);const r=new R();r.lang='de-DE';r.maxAlternatives=3;r.onresult=e=>done([...e.results[0]].map(x=>x.transcript));r.onerror=()=>done([]);r.onnomatch=()=>done([]);r.start()}
+
+const AK='9d677ddbc4d486f3ced591b42085ea7636062cd0b0d4130c99d3ff2a53091597'; // SHA-256 of the admin key. The key itself is not stored in this file.
+let me=null,W=[],AD,T=[];const TM=['Quiz','','#c2185b','📋'];
+async function loadWords(){const w=await DB.get('words')||[];W=Array.isArray(w)?w:Object.values(w);const t=await DB.get('tests')||[];T=(Array.isArray(t)?t:Object.values(t)).filter(Boolean)}
+const lessons=()=>[...new Set([...Object.keys(L).map(Number),...W.map(w=>+w.l)])].sort((a,b)=>a-b);
+const words=n=>[...(L[n]?.w||[]).map(s=>{const[a,d,r]=s.split('|');return{a,d,r}}),...W.filter(w=>+w.l==n)];
+
+// Privacy notice
+const consent=()=>localStorage.consent=='1';
+function bar(t){const b=$('#bar');b.hidden=consent();
+ b.innerHTML=`<div class="row"><span style="flex:1;min-width:240px">${t||'Privacy: this site stores your name, scores, answers, how long each answer takes, and when you sign in, so your teacher can follow your progress. Your browser keeps a small record (local storage) to run the site and keep you signed in. Nothing is sold.'}</span><button class="g" onclick="localStorage.consent=1;bar()">Accept</button><button class="o" style="color:inherit" onclick="bar('Without accepting, you cannot sign in or create an account.')">Decline</button></div>`}
+
+// Auth
+const EJ={service:'service_7klh5fg',template:'template_hwqywat',key:'kx0WhEIea962agj7b'}; // EmailJS ids for password-reset emails
+const note=t=>$('#m').textContent=t;
+const ek=e=>e.trim().toLowerCase().replace(/[.$#\[\]\/\s]/g,'_');
+const hdr=()=>$('#who').innerHTML=me?esc(me.name)+' <button class="o" onclick="out()">Sign out</button>':'';
+function landing(){app.innerHTML=`<div class="hero"><div class="wave" style="font-size:54px">👋</div><h1>Germanly</h1><p>Made for students who want to practice German.</p>${chips()}<p style="margin-top:22px"><button class="g" onclick="loginView()">Log in</button> <button class="o" onclick="signupView()">Sign up</button></p><p><a href="#" onclick="adminView();return false">Admin sign in</a></p></div>`}
+function loginView(){app.innerHTML=`<div class="card" style="max-width:420px;margin:30px auto"><h3>Log in</h3><label>Name<input id="n" autocomplete="username"></label><label>Password<input id="p" type="password" autocomplete="current-password"></label><p class="bad" id="m"></p><button class="g" onclick="login()">Log in</button> <button class="o" onclick="landing()">Back</button><p><a href="#" onclick="forgotView();return false">Forgot password?</a> · <a href="#" onclick="signupView();return false">Create an account</a></p></div>`;$('#p').onkeydown=e=>{if(e.key=='Enter')login()}}
+function signupView(){app.innerHTML=`<div class="card" style="max-width:420px;margin:30px auto"><h3>Sign up</h3><label>Name<input id="n" autocomplete="username"></label><label>Gmail address<input id="e" type="email" placeholder="name@gmail.com" autocomplete="email"></label><label>Center name<input id="c" autocomplete="organization"></label><label>Password (4+ characters)<input id="p" type="password" autocomplete="new-password"></label><p class="bad" id="m"></p><button class="g" onclick="signup()">Create account</button> <button class="o" onclick="landing()">Back</button><p><a href="#" onclick="loginView();return false">I already have an account</a></p></div>`}
+async function enter(k,u){me={k,name:u.name,role:'student'};localStorage.me=JSON.stringify(me);await DB.log({type:'login',u:k,n:u.name,t:Date.now()});hdr();home()}
+async function login(){
+ if(!consent()){bar();return note('Accept the privacy notice first.')}
+ const n=$('#n').value.trim(),k=key(n);if(!n||k=='admin')return note('Wrong name or password.');
+ const u=await DB.get('users/'+k);
+ if(!u||u.pw!=await sha($('#p').value))return note('Wrong name or password.');
+ enter(k,u)}
+async function signup(){
+ if(!consent()){bar();return note('Accept the privacy notice first.')}
+ const n=$('#n').value.trim(),e=$('#e').value.trim(),c=$('#c').value.trim(),p=$('#p').value,k=key(n);
+ if(n.length<2||k=='admin')return note('Please type a name (at least 2 letters).');
+ if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e))return note('Please type a valid email address.');
+ if(!c)return note('Please type your center name.');
+ if(p.length<4)return note('The password needs at least 4 characters.');
+ if(await DB.get('users/'+k))return note('This name is taken. Log in instead.');
+ if(await DB.get('emails/'+ek(e)))return note('This email already has an account.');
+ const u={name:n,role:'student',email:e,center:c,pw:await sha(p),joined:Date.now(),consent:Date.now()};
+ await DB.put('users/'+k,u);await DB.put('emails/'+ek(e),k);enter(k,u)}
+function forgotView(){app.innerHTML=`<div class="card" style="max-width:420px;margin:30px auto"><h3>Forgot password</h3><p>Type the email you signed up with. We will send you a 6-digit code.</p><label>Email<input id="e" type="email"></label><p class="bad" id="m"></p><button class="g" onclick="sendCode()">Send code</button> <button class="o" onclick="loginView()">Back</button></div>`}
+let RK='';
+async function sendCode(){
+ if(!EJ.key)return note('Email reset is not set up yet. Ask your teacher to reset your password.');
+ const e=$('#e').value.trim();RK=await DB.get('emails/'+ek(e));const u=RK&&await DB.get('users/'+RK);
+ if(!u)return note('No account uses this email.');
+ const code=String(100000+Math.floor(Math.random()*900000));u.rc=await sha(code);u.rx=Date.now()+9e5;await DB.put('users/'+RK,u);
+ const r=await fetch('https://api.emailjs.com/api/v1.0/email/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({service_id:EJ.service,template_id:EJ.template,user_id:EJ.key,template_params:{to_email:e,code,name:u.name}})}).catch(()=>0);
+ if(!r||!r.ok)return note('The email could not be sent. '+(r?(await r.text()).slice(0,150):'The browser blocked the request. Turn off ad blockers and try again.'));
+ app.innerHTML=`<div class="card" style="max-width:420px;margin:30px auto"><h3>Check your email</h3><p>Type the code we sent and choose a new password.</p><label>Code<input id="cd" inputmode="numeric"></label><label>New password<input id="p" type="password" autocomplete="new-password"></label><p class="bad" id="m"></p><button class="g" onclick="doReset()">Save new password</button></div>`}
+async function doReset(){const u=await DB.get('users/'+RK),p=$('#p').value;
+ if(p.length<4)return note('The password needs at least 4 characters.');
+ if(!u.rc||Date.now()>u.rx||u.rc!=await sha($('#cd').value.trim()))return note('Wrong or expired code.');
+ u.pw=await sha(p);delete u.rc;delete u.rx;await DB.put('users/'+RK,u);loginView();note('Password changed. Log in now.')}
+function adminView(){app.innerHTML=`<div class="card" style="max-width:420px;margin:30px auto"><h3>🔑 Admin sign in</h3><p>Enter the admin key to see student results.</p><label>Admin key<input id="ak" type="password" autocomplete="off"></label><p class="bad" id="m"></p><button class="g" onclick="adminAuth()">Open admin page</button> <button class="o" onclick="landing()">Back</button></div>`;$('#ak').onkeydown=e=>{if(e.key=='Enter')adminAuth()}}
+async function adminAuth(){
+ const k=$('#ak').value.replace(/[\s-]/g,'').toUpperCase();
+ if(await sha(k)!=AK)return note('That key is not correct.');
+ me={k:'admin',name:'Admin',role:'admin'};sessionStorage.me=JSON.stringify(me);hdr();await loadWords();home()}
+function out(){localStorage.removeItem('me');sessionStorage.removeItem('me');me=null;hdr();landing()}
+
+// Student home
+const last=(a,m,n)=>{a=a.filter(x=>x.m==m&&x.l==n);if(!a.length)return'';const s=Math.max(...a.map(x=>x.s)),r=a.filter(x=>x.s==s);return ` · ${r.filter(x=>x.ok).length}/${r.length}`};
+async function home(){
+ if(me.role=='admin')return admin();
+ app.innerHTML='<div class="card">Loading...</div>';
+ await loadWords();
+ const mine=(await DB.logs()).filter(x=>x.u==me.k&&x.type=='ans');
+ const qz=T.length?`<div class="card mc" style="--c:#c2185b"><h3><span class="ic">📋</span> Quizzes</h3><p>Quizzes from your teacher.</p><div class="row">${T.map((t,i)=>`<button class="o" onclick="runTest(${i})">${t.pwh?'🔒 ':''}${esc(t.title)}<br><small>${t.qs.length} questions${t.lim?.t?' · '+t.lim.t+' min':''}${last(mine,'test',t.title)}</small></button>`).join('')}</div></div>`:'';
+ app.innerHTML=`<h2 class="hello">Hallo, ${esc(me.name)}! 👋</h2><p>Pick a mode. Every time you start, you get 15 new random questions.</p>${qz}`+Object.entries(MODES).map(([m,[t,d,c,e]],i)=>`<div class="card mc" style="--c:${c};animation-delay:${i*.07}s"><h3><span class="ic">${e}</span> ${t}</h3><p>${d}</p><div class="row"><button class="g" onclick="quiz('${m}',0)">🎲 Mixed${last(mine,m,0)}</button>${lessons().map(n=>`<button class="o" onclick="quiz('${m}',${n})">Lektion ${n}${last(mine,m,n)}<br><small>${esc(L[n]?.t||'')}</small></button>`).join('')}</div></div>`).join('')}
+
+// Quiz
+function build(m,n){
+ const Wd=n?words(n):lessons().flatMap(words),N=Wd.filter(w=>w.a);let P=[];
+ if(m=='grammar'){P=(n?(L[n]?.g||[]):lessons().flatMap(k=>L[k]?.g||[])).map(x=>{const[p,o,a]=x.split('|');return{p,o:shuf(o.split(',')),a,t:'c'}});
+  N.forEach(w=>P.push({p:`Ich sehe ___ ${w.d}.`,h:w.r,o:['den','die','das'],a:{der:'den',die:'die',das:'das'}[w.a],t:'c'},{p:`Das gehört zu ___ ${w.d}.`,h:w.r,o:['dem','der','den'],a:w.a=='die'?'der':'dem',t:'c'}))}
+ if(m=='meaning')P=Wd.flatMap(w=>{const o=()=>pick(Wd.filter(x=>x!=w),3);return[{p:w.d,o:shuf([w,...o()].map(x=>x.r)),a:w.r,t:'c'},{p:w.r,o:shuf([w,...o()].map(x=>x.d)),a:w.d,t:'c'}]});
+ if(m=='article')P=N.flatMap(w=>[0,1,2].map(k=>{const s=[['der','die','das'],['ein','eine'],['mein','meine']][k];return{p:'___ '+w.d,h:w.r,o:s,a:k?(w.a=='die'?s[1]:s[0]):w.a,t:'c'}}));
+ if(m=='spell')P=Wd.flatMap(w=>[{p:w.r,s:w.d,a:w.d,t:'x'},{p:'🔊 ?',h:w.r,s:w.d,a:w.d,t:'x'}]);
+ if(m=='speak')P=Wd.flatMap(w=>[{p:w.d,h:w.r,s:w.d,a:w.d,t:'v'}].concat(w.a?[{p:w.a+' '+w.d,h:w.r,s:w.a+' '+w.d,a:w.a+' '+w.d,t:'v'}]:[]));
+ return shuf(P)}
+function runTest(i,ok){const t=T[i];
+ if(t.pwh&&!ok){app.innerHTML=`<div class="card" style="max-width:420px;margin:30px auto"><h3>🔒 ${esc(t.title)}</h3><p>Enter the quiz password from your teacher.</p><input id="tp" type="password" autocomplete="off"><p class="bad" id="m"></p><button class="g" onclick="testPw(${i})">Start quiz</button> <button class="o" onclick="home()">Back</button></div>`;$('#tp').onkeydown=e=>{if(e.key=='Enter')testPw(i)};$('#tp').focus();return}
+ const qs=t.qs.map(q=>{const a=[].concat(q.a),c=q.o.filter((_,j)=>a.includes(j));return c.length>1?{p:q.q,o:shuf(q.o),a:c,t:'m'}:{p:q.q,o:shuf(q.o),a:c[0],t:'c'}});
+ quiz('test',t.title,shuf(qs),t.lim)}
+async function testPw(i){if(await sha($('#tp').value.trim())!=T[i].pwh)return note('Wrong password. Ask your teacher.');runTest(i,1)}
+function rain(list,n,up){if(calm())return;for(let i=0;i<n;i++){const e=document.createElement('i');e.className='em'+(up?' up':'');e.textContent=list[i%list.length];e.style.cssText=`left:${Math.random()*95}vw;animation-duration:${2.5+Math.random()*2}s;animation-delay:${Math.random()*.8}s`;document.body.append(e);setTimeout(()=>e.remove(),6500)}}
+function celebrate(r){if(r>=.8){confetti(130);rain(['🎆','🏆','⭐','🎉'],20)}else if(r>=8/15){confetti(70);rain(['👏','🎉'],10)}else rain(['💪','🌱','❤️','⭐'],14,1)}
+function quiz(m,n,pre,lim){
+ const M=MODES[m]||TM,lab=pre?n:M[0]+', '+(n?'Lektion '+n:'Mixed'),Q=pre||build(m,n).slice(0,15),run=Date.now(),rev=[],end=lim?.t?Date.now()+lim.t*6e4:0;let i=0,sc=0,iv=0;
+ window._r=()=>quiz(m,n,pre,lim);
+ if(!Q.length){app.innerHTML='<div class="card">No questions here yet.<p><button onclick="home()">Back</button></p></div>';return}
+ const fin=()=>{clearInterval(iv);const r=sc/Q.length,v=r>=.8?['🏆','Fantastisch!']:r>=8/15?['👏','Gut gemacht!']:['💪','Du schaffst das! Keep practicing.'];celebrate(r);
+  app.innerHTML=`<div class="card" style="text-align:center"><div class="big" style="font-size:64px">${v[0]}</div><div class="big">${sc} / ${Q.length}</div><p>${esc(lab)} finished. ${v[1]}</p><button class="g" onclick="_r()">Try again</button> <button class="o" onclick="home()">Back to home</button></div><div class="card"><h3>Review your answers</h3>${rev.map((x,j)=>`<div class="rv"><b dir="auto">${j+1}. ${esc(x.p)}</b><br><span class="${x.ok?'ok':'bad'}">${x.ok?'✓':'✗'} ${esc(x.g)}</span>${x.ok?'':` · Correct: <b dir="auto">${esc(x.a)}</b>`}</div>`).join('')}</div>`};
+ const step=()=>{
+  clearInterval(iv);
+  if(i>=Q.length)return fin();
+  const q=Q[i],t0=performance.now();let done=0,left=lim?.q||0;
+  app.innerHTML=`<div class="card q" style="--c:${M[2]};--f:${Math.max(0,i-1)/Q.length*100}%;--t:${i/Q.length*100}%"><div class="pb"><i></i></div><div class="row"><b>${M[3]} ${esc(lab)}</b><span id="tm"></span><span style="margin-inline-start:auto">${i+1} / ${Q.length}</span></div><div class="big" dir="auto">${esc(q.p)}</div>${q.h?`<p dir="auto">${esc(q.h)}</p>`:''}${q.t=='m'?'<p><small>Select all the correct answers.</small></p>':''}<div id="in"></div><p id="fb"></p></div>`;
+  const box=$('#in'),fb=$('#fb'),add=(t,f,c='')=>{const b=document.createElement('button');b.textContent=t;b.className=c;b.onclick=f;box.append(b,' ');return b};
+  const ans=g=>{if(done)return;done=1;
+   const ok=q.t=='c'?g==q.a:q.t=='m'?(g.length==q.a.length&&g.every(x=>q.a.includes(x))):q.t=='x'?norm(g)==norm(q.a):q.ok,ms=Math.round(performance.now()-t0),gs=[].concat(g).join(' + '),as=[].concat(q.a).join(' + ');
+   sc+=ok?1:0;i++;rev.push({p:q.p,g:gs,a:as,ok:!!ok});
+   DB.log({type:'ans',u:me.k,n:me.name,t:Date.now(),s:run,m,l:n,q:q.p,g:gs,a:as,ok:!!ok,ms});
+   box.querySelectorAll('.opt').forEach(b=>{b.disabled=1;const v=b.dataset.v;if([].concat(q.a).includes(v))b.classList.add('right');else if([].concat(g).includes(v))b.classList.add('wrong')});
+   const ti=$('#ti');if(ti)ti.disabled=1;
+   fb.innerHTML=`<b class="${ok?'ok':'bad'}">${ok?'🎉 Correct':'💪 Not quite'}.</b>${q.t=='v'?` You said "${esc(gs)}".`:''}${ok?'':` The answer is <b>${esc(as)}</b>.`} `;
+   const nb=document.createElement('button');nb.className='g';nb.textContent=i>=Q.length?'See score':'Next';nb.onclick=step;fb.append(nb);nb.focus()};
+  if(q.t=='c')q.o.forEach(o=>add(o,()=>ans(o),'opt o').dataset.v=o);
+  if(q.t=='m'){const sel=new Set();q.o.forEach(o=>{add(o,function(){sel.has(o)?sel.delete(o):sel.add(o);this.classList.toggle('sel')},'opt o').dataset.v=o});add('Submit',()=>ans([...sel]),'g')}
+  if(q.t=='x'){box.innerHTML='<input id="ti" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false">';
+   add('Listen',()=>say(q.s),'o');add('Check',()=>ans($('#ti').value),'g');
+   $('#ti').onkeydown=e=>{if(e.key=='Enter')ans($('#ti').value)};$('#ti').focus()}
+  if(q.t=='v'){add('Listen',()=>say(q.s),'o');
+   add('Speak',()=>{fb.textContent='Listening...';listen(r=>{if(done)return;
+    if(!r||!r.length){fb.textContent=r===null?'This browser has no speech recognition. Use Chrome or Edge.':'Nothing heard. Allow the microphone, then try again.';return}
+    q.ok=r.some(x=>{const a=norm(x),b=norm(q.a);return a==b||(b.length>5&&lev(a,b)<=1)});ans(r[0])})},'g')}
+  const tick=()=>{let t='';
+   if(end){const sec=Math.max(0,Math.round((end-Date.now())/1e3));t='⏱ '+Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');if(!sec)return fin()}
+   if(lim?.q&&!done){t+=' · '+left+'s';if(left--<=0)ans(q.t=='m'?[]:'(time up)')}
+   const e=$('#tm');if(e)e.textContent=t};
+  if(end||lim?.q){tick();iv=setInterval(tick,1000)}};
+ step()}
+
+// Admin
+const pct=r=>r.length?Math.round(100*r.filter(x=>x.ok).length/r.length)+'% ('+r.length+')':'-';
+const lk=x=>x.m=='test'?x.l:(x.l?'Lektion '+x.l:'Mixed'),mn=x=>MODES[x.m]?.[0]||'Quiz';
+async function admin(){
+ const U=await DB.get('users')||{},logs=await DB.logs(),st=Object.entries(U).filter(([k,u])=>u.role!='admin');AD={logs,st};
+ await loadWords();
+ const rows=st.map(([k,u],i)=>{const a=logs.filter(x=>x.u==k&&x.type=='ans'),lg=logs.filter(x=>x.u==k&&x.type=='login');
+  return `<tr><td>${esc(u.name)}<td>${esc(u.center||'-')}<td>${esc(u.email||'-')}<td>${lg.length}<td>${lg.length?fd(Math.max(...lg.map(x=>x.t))):'-'}${Object.keys(MODES).map(m=>'<td>'+pct(a.filter(x=>x.m==m))).join('')}<td>${pct(a.filter(x=>x.m=='test'))}<td>${a.length?(a.reduce((s,x)=>s+x.ms,0)/a.length/1000).toFixed(1):'-'}<td><button class="o" onclick="det(${i})">Details</button></tr>`}).join('');
+ const ms=logs.filter(x=>x.type=='msg').sort((x,y)=>y.t-x.t);
+ app.innerHTML=(DB.url?'':`<div class="card" style="border-color:var(--bad)"><b class="bad">Shared data is OFF.</b> Quizzes, accounts and results only exist in this one browser, so students on other devices will not see your quizzes and you will not see their results. Connect Firebase: put its address in DB.url at the top of index.html.</div>`)+`<div class="card"><h3>Students</h3><p>Score = % correct (number of answers). Avg sec = average time per question.</p><div style="overflow-x:auto"><table><tr><th>Name<th>Center<th>Email<th>Logins<th>Last login${Object.values(MODES).map(x=>'<th>'+x[0]).join('')}<th>Quizzes<th>Avg sec<th></tr>${rows||'<tr><td>No students yet.</tr>'}</table></div></div>
+ <div class="card"><h3>Messages (${ms.length})</h3>${ms.map(x=>`<div class="rv"><b>${esc(x.n)}</b> <small>${fd(x.t)}</small><br>${esc(x.text)}</div>`).join('')||'<p>No messages yet.</p>'}</div>
+ <div class="card"><h3>Quizzes</h3><p>Each quiz you add appears as a button on the students' home page.</p>${T.map((t,i)=>`<div class="row" style="margin:6px 0"><b style="flex:1">${t.pwh?'🔒 ':''}${esc(t.title)} <small>(${t.qs.length} questions)</small></b><button class="o" onclick="newTest(${i})">Edit</button><button class="o" onclick="delT(${i})">Delete</button></div>`).join('')}<button class="g" onclick="newTest(-1)">＋ New quiz</button></div>
+ <div class="card"><h3>Add words from the book</h3><p>One word per line: Lektion|article|German|Arabic. Leave the article empty for words that are not nouns. A new Lektion number creates a new Lektion.</p><textarea id="wt" rows="5" dir="ltr" placeholder="15|der|Hund|الكلب"></textarea><button class="g" onclick="saveW()">Save words</button></div>`}
+function det(i){const[k,u]=AD.st[i],all=AD.logs.filter(x=>x.u==k).sort((x,y)=>y.t-x.t),a=all.filter(x=>x.type=='ans'),lg=all.filter(x=>x.type=='login'),runs={};
+ a.forEach(x=>(runs[x.s]=runs[x.s]||[]).push(x));
+ const att=Object.values(runs).map(r=>({t:Math.max(...r.map(x=>x.t)),x:r[0],ok:r.filter(x=>x.ok).length,n:r.length,ms:r.reduce((s,x)=>s+x.ms,0)})).sort((x,y)=>y.t-x.t);
+ app.innerHTML=`<div class="card"><button class="o" onclick="admin()">Back</button><details style="margin:12px 0"><summary><b>Edit or delete this account</b></summary><label>Name (they still sign in with their original name)<input id="en" value="${esc(u.name)}"></label><label>Center<input id="ec" value="${esc(u.center||'')}"></label><label>New password (leave empty to keep the old one)<input id="ep" type="password" autocomplete="new-password"></label><button class="g" onclick="saveU(${i})">Save changes</button> <button class="o" style="border-color:var(--bad);color:var(--bad)" onclick="delU(${i})">Delete account</button></details><h3>${esc(u.name)}</h3><p>Email: ${esc(u.email||'-')} · Center: ${esc(u.center||'-')}<br>Joined ${fd(u.joined)}. Accepted the privacy notice: ${u.consent?fd(u.consent):'-'}.<br>Logins: ${lg.length} · Attempts: ${att.length} · Questions answered: ${a.length} · Correct: ${pct(a)} · Time answering: ${(a.reduce((s,x)=>s+x.ms,0)/6e4).toFixed(1)} min</p><p><b>Recent logins:</b> ${lg.slice(0,20).map(x=>fd(x.t)).join('; ')||'-'}</p></div>
+ <div class="card"><h3>All attempts (practice and quizzes)</h3><div style="overflow-x:auto"><table><tr><th>When<th>Type<th>Lektion / quiz<th>Score<th>Time<th>Sec per question</tr>${att.map(r=>`<tr><td>${fd(r.t)}<td>${esc(mn(r.x))}<td>${esc(lk(r.x))}<td>${r.ok} / ${r.n}<td>${Math.round(r.ms/1000)} s<td>${(r.ms/r.n/1000).toFixed(1)}</tr>`).join('')||'<tr><td>No attempts yet.</tr>'}</table></div></div>
+ <div class="card"><h3>Every answer</h3><div style="overflow-x:auto"><table><tr><th>When<th>Type<th>Lektion / quiz<th>Question<th>Answered<th>Correct answer<th>Result<th>Sec</tr>${a.slice(0,500).map(x=>`<tr><td>${fd(x.t)}<td>${esc(mn(x))}<td>${esc(lk(x))}<td>${esc(x.q)}<td>${esc(x.g)}<td>${esc(x.a)}<td class="${x.ok?'ok':'bad'}">${x.ok?'Right':'Wrong'}<td>${(x.ms/1000).toFixed(1)}</tr>`).join('')}</table></div></div>`}
+async function saveU(i){const[k,u]=AD.st[i];u.name=$('#en').value.trim()||u.name;u.center=$('#ec').value.trim();const p=$('#ep').value;
+ if(p){if(p.length<4)return alert('The password needs at least 4 characters.');u.pw=await sha(p)}
+ await DB.put('users/'+k,u);alert('Saved.');admin()}
+async function delU(i){const[k,u]=AD.st[i];if(!confirm('Delete '+u.name+' and all their results? This cannot be undone.'))return;await DB.del('users/'+k);if(u.email)await DB.del('emails/'+ek(u.email));await DB.purge(k);admin()}
+let TB=null,TI=-1;
+const has=(q,j)=>[].concat(q.a).includes(j);
+function lm(k,v){TB.lim=TB.lim||{};TB.lim[k]=+v||0}
+function tg(i,j){const q=TB.qs[i],a=[].concat(q.a),x=a.indexOf(j);x<0?a.push(j):a.splice(x,1);q.a=a}
+function newTest(i){TI=i;TB=i>=0?JSON.parse(JSON.stringify(T[i])):{id:Date.now(),title:'',qs:[{q:'',o:['',''],a:[0]}]};tb()}
+function rmO(i,j){const q=TB.qs[i];if(q.o.length<=2)return;q.o.splice(j,1);q.a=[].concat(q.a).filter(x=>x!=j).map(x=>x>j?x-1:x);if(!q.a.length)q.a=[0];tb()}
+function tb(){app.innerHTML=`<div class="card tf"><button class="o" onclick="admin()">Back</button><input class="tt" placeholder="Untitled quiz" value="${esc(TB.title)}" oninput="TB.title=this.value"><label>🔒 Quiz password (optional)<input autocomplete="off" placeholder="${TB.pwh?'A password is set. Type a new one to change it.':'Leave empty so anyone can start the quiz'}" oninput="TB.np=this.value"></label>${TB.pwh?`<button class="o" onclick="TB.pwh='';TB.np='';tb()">Remove password</button>`:''}<div class="row"><label style="flex:1">⏱ Total minutes (optional)<input type="number" min="1" value="${TB.lim?.t||''}" oninput="lm('t',this.value)"></label><label style="flex:1">⏱ Seconds per question (optional)<input type="number" min="5" value="${TB.lim?.q||''}" oninput="lm('q',this.value)"></label></div></div>`+TB.qs.map((q,i)=>`<div class="card tf"><input class="qq" placeholder="Question ${i+1}" value="${esc(q.q)}" oninput="TB.qs[${i}].q=this.value">${q.o.map((o,j)=>`<div class="row"><input type="checkbox" ${has(q,j)?'checked':''} onchange="tg(${i},${j})" style="width:auto"><input placeholder="Option ${j+1}" value="${esc(o)}" oninput="TB.qs[${i}].o[${j}]=this.value"><button class="o" onclick="rmO(${i},${j})">✕</button></div>`).join('')}<div class="row"><button class="o" onclick="TB.qs[${i}].o.push('');tb()">＋ Add option</button><button class="o" onclick="TB.qs.splice(${i},1);tb()">🗑 Delete question</button></div><small>Tick every correct answer. You can tick more than one.</small></div>`).join('')+`<div class="row"><button class="o" onclick="TB.qs.push({q:'',o:['',''],a:[0]});tb()">＋ Add question</button><button class="g" onclick="saveT()">Save quiz</button></div>`}
+async function saveT(){TB.title=TB.title.trim();if(TB.np&&TB.np.trim())TB.pwh=await sha(TB.np.trim());delete TB.np;
+ TB.qs.forEach(q=>{q.q=q.q.trim();q.o=q.o.map(x=>x.trim())});if(!TB.lim?.t&&!TB.lim?.q)delete TB.lim;
+ if(!TB.title||!TB.qs.length||!TB.qs.every(q=>q.q&&q.o.every(Boolean)&&[].concat(q.a).length))return alert('Give the quiz a title, tick at least one correct answer, and fill in every question and option (or delete the empty ones).');
+ if(TI>=0)T[TI]=TB;else T.push(TB);await DB.put('tests',T);admin()}
+async function delT(i){if(!confirm('Delete this quiz?'))return;T.splice(i,1);await DB.put('tests',T);admin()}
+async function saveW(){
+ const add=$('#wt').value.split('\n').map(s=>s.split('|').map(x=>x.trim())).filter(x=>x.length==4&&+x[0]&&x[2]&&x[3]).map(([l,a,d,r])=>({l:+l,a,d,r}));
+ W=[...W,...add];await DB.put('words',W);admin()}
+
+// Help panel: built-in helper and a message to the teacher
+const TIPS=[[['artikel','article','der','die','das'],'Every German noun has an article: der (masculine), die (feminine and all plurals), das (neuter). Learn each noun together with its article.'],[['ein','eine','mein','meine','possessiv','possessive'],'ein/mein go with der- and das-nouns, eine/meine with die-nouns: ein Arzt, eine Hand, mein Bein, meine Nase.'],[['dativ','dative','mit','zu','bei','nach'],'After mit, zu, bei, nach, von, aus the noun is in the Dativ: dem (der- and das-nouns), der (die-nouns). Example: mit dem Bus, mit der U-Bahn.'],[['akkusativ','accusative'],'In the Akkusativ only der changes to den: Ich sehe den Arzt, die Nase, das Auge.'],[['sollen','modal','müssen','können'],'Modal verbs take an infinitive at the end: Du sollst mehr Wasser trinken. Er soll zum Arzt gehen.'],[['gefallen','passen','gehören','stehen'],'These verbs take a Dativ person: Das Kleid gefällt mir. Die Hose passt ihm. Der Rock steht dir gut.'],[['trennbar','separable','anziehen','anrufen'],'Separable verbs split in main clauses: Ich ziehe eine Jacke an. Ich rufe dich an.'],[['pronomen','pronoun','ich','du','er'],'ich, du, er/sie/es, wir, ihr, sie/Sie. Dativ: mir, dir, ihm/ihr, uns, euch, ihnen/Ihnen.']];
+function bot(q){const tk=q.toLowerCase().split(/[^a-zäöüßء-ي]+/);
+ const hits=lessons().flatMap(n=>words(n).filter(w=>tk.includes(w.d.toLowerCase())||q.includes(w.r.split(' / ')[0])).map(w=>`${w.a?w.a+' ':''}${w.d} = ${w.r} (Lektion ${n})`));
+ if(hits.length)return hits.slice(0,5).join('\n');
+ const t=TIPS.find(x=>x[0].some(k=>tk.includes(k)));
+ return t?t[1]:'I am a simple helper, not a full AI. I know the words from Lektionen 10 to 14 and a few grammar topics. For anything else, use the Contact tab to message your teacher.'}
+function panel(){const p=$('#panel');if(!p.hidden){p.hidden=true;return}p.hidden=false;
+ p.innerHTML='<div class="row"><b style="flex:1">💬 Help</b><button class="o" onclick="tab(0)">Ask</button><button class="o" onclick="tab(1)">Contact</button><button class="o" onclick="panel()">✕</button></div><div id="pb"></div>';tab(0)}
+function tab(t){$('#pb').innerHTML=t?'<p>Send a message to the teacher. It appears on the admin page.</p><textarea id="mt" rows="4" maxlength="1000"></textarea><button class="g" onclick="sendMsg()">Send</button> <span id="ms"></span>':'<div id="cl" class="cl"><div class="bot">Hallo! Type a German or Arabic word, or ask about articles, Dativ, Akkusativ, sollen or possessives.</div></div><input id="ci" placeholder="Ask me..." onkeydown="if(event.key==\'Enter\')ask()"><button class="g" onclick="ask()">Ask</button>'}
+async function sendMsg(){const t=$('#mt').value.trim();if(!t)return;await DB.log({type:'msg',u:me?me.k:'guest',n:me?me.name:'Guest',t:Date.now(),text:t});$('#mt').value='';$('#ms').textContent='✓ Sent'}
+function ask(){const i=$('#ci'),q=i.value.trim();if(!q)return;i.value='';const c=$('#cl');c.insertAdjacentHTML('beforeend',`<div class="you">${esc(q)}</div><div class="bot">${esc(bot(q))}</div>`);c.scrollTop=1e9}
+
+const chips=()=>Object.values(MODES).map(([t,,c,e],i)=>`<span class="chip" style="background:${c};animation-delay:${.3+i*.1}s">${e} ${t}</span>`).join('');
+const calm=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
+function confetti(n=70){if(calm())return;const c=['#e03b3b','#ffce00','#7c4dff','#008f8f','#d95f00','#2f6fe8'];
+ for(let i=0;i<n;i++){const e=document.createElement('i');e.className='cf';e.style.cssText=`left:${Math.random()*100}vw;background:${c[i%6]};animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*.6}s`;document.body.append(e);setTimeout(()=>e.remove(),4800)}}
+function deco(){const w=['Hallo','Danke','der','die','das','ä','ö','ü','ß','Bitte','ein','eine','mein','Schule','Familie','ja','nein','أهلا','Guten Tag'],c=['#e03b3b','#d9a300','#7c4dff','#008f8f','#d95f00','#2f6fe8'],d=$('#deco');
+ for(let i=0;i<20;i++){const s=document.createElement('span');s.textContent=w[i%w.length];s.style.cssText=`left:${Math.random()*92}%;font-size:${18+Math.random()*34}px;color:${c[i%6]};animation-duration:${14+Math.random()*16}s;animation-delay:-${Math.random()*20}s`;d.append(s)}}
+function splash(){const s=$('#splash');if(sessionStorage.splash)return s.remove();sessionStorage.splash=1;confetti(60);
+ const h=()=>{s.style.opacity=0;s.style.visibility='hidden';setTimeout(()=>s.remove(),700)};s.onclick=h;setTimeout(h,2800)}
+// Start.
+(async()=>{bar();deco();splash();
+ const sv=localStorage.me||sessionStorage.me;
+ if(sv){me=JSON.parse(sv);hdr();await loadWords();home()}else landing()})();
+</script></body></html>
